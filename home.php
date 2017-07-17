@@ -52,28 +52,4 @@ function showcase_home_page_header() {
 		echo $output;
 }
 
-remove_action( 'genesis_header', 'genesis_header_markup_open', 5 );
-add_action( 'genesis_header', 'showcase_header_markup_open', 5 );
-/**
- * Echo the opening structural markup for the header.
- *
- * @since 1.2.0
- *
- * @uses genesis_markup()          Apply contextual markup.
- * @uses genesis_structural_wrap() Maybe add opening .wrap div tag with header context.
- */
-function showcase_header_markup_open() {
-
-    genesis_markup( array(
-        'html5'   => '<header %s>',
-        'xhtml'   => '<div id="header">',
-        'context' => 'site-header',
-    ) );
-
-    echo '<div class="throwing-shade shade-divider"></div>';
-
-    genesis_structural_wrap( 'header' );
-
-}
-
 genesis();
