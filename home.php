@@ -16,7 +16,7 @@ add_filter( 'body_class', 'showcase_home_page_header_body_class' );
 function showcase_home_page_header_body_class( $classes ) {
 
     $posts_page_id = get_option('page_for_posts');
-    
+
     if( has_post_thumbnail($posts_page_id) )
         $classes[] = 'with-page-header';
 
@@ -50,6 +50,30 @@ function showcase_home_page_header() {
 
 	if( $output )
 		echo $output;
+}
+
+remove_action( 'genesis_header', 'genesis_header_markup_open', 5 );
+add_action( 'genesis_header', 'showcase_header_markup_open', 5 );
+/**
+ * Echo the opening structural markup for the header.
+ *
+ * @since 1.2.0
+ *
+ * @uses genesis_markup()          Apply contextual markup.
+ * @uses genesis_structural_wrap() Maybe add opening .wrap div tag with header context.
+ */
+function showcase_header_markup_open() {
+
+    genesis_markup( array(
+        'html5'   => '<header %s>',
+        'xhtml'   => '<div id="header">',
+        'context' => 'site-header',
+    ) );
+
+    echo '<div class="throwing-shade shade-divider"></div>';
+
+    genesis_structural_wrap( 'header' );
+
 }
 
 genesis();
