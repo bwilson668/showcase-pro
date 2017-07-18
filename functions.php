@@ -33,6 +33,9 @@ function showcase_theme_setup() {
 	// Include notice to install Genesis Connect for WooCommerce
 	include_once( get_stylesheet_directory() . '/inc/woocommerce/woocommerce-notice.php' );
 
+	// Include custom functions
+	include_once( get_stylesheet_directory() . '/lib/header.php' );
+
 	// Enable shortcodes in text widgets
 	add_filter('widget_text','do_shortcode');
 
